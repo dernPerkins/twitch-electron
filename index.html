@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LowTwitch</title>
+    <link href="css/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- Load the Twitch embed script from live api -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <!-- <script src="js/js.cookie.js"></script> -->
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</head>
+<body>
+    <div id="title-bar">
+        <div id="title-bar-icon">
+            <i class="fab fa-twitch"></i>
+        </div>
+        <div id="title-bar-buttons">
+            <a id="title-bar-min-btn"><i class="fas fa-window-minimize"></i></a>
+            <a id="title-bar-screen-btn"><i class="far fa-square"></i></a>
+            <a id="title-bar-close-btn"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <div id="side-bar" class="sidenav" data-navigation="false">
+        <div id="follow-list">
+        </div>
+        <a id="login-btn" role="button">Login</a>
+        <div id="profile" class="hidden">
+            <div id="profile-name"></div>
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </div>
+    <div id="container">
+        <!-- Use any element to open the sidenav -->
+        <div id="menu-switch-bar">
+            <button id="menu-switch-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="twitch-embed">
+            <div id="twitch-logo">
+                <img src="images/Twitch_White_RGB.png" />
+            </div>
+            <div id="twitch-loading" class='hidden'>
+                <div class="lds-facebook">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script>require('./js/index') //require renderer index</script>
+</body>
+
+</html>

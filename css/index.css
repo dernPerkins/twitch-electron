@@ -1,0 +1,261 @@
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arvo', serif;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40px auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    color: #ffffff;
+    transition: .3s;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #ffffff;
+}
+
+#title-bar {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 64px auto;
+    -webkit-app-region: drag;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: #6441a5;
+    color: #ffffff;
+    padding: 0 0 0 14px;
+    margin: 0px;
+    z-index: 13;
+}
+
+#title-bar a {
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+
+#title-bar-icon {
+    grid-column: 1;
+    place-self: center start;
+}
+
+#title-bar-icon i {
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+#title-bar-buttons {
+    place-self: center end;
+    grid-column: 2;
+    margin: 0 14px 0 0;
+}
+
+#title-bar-buttons a {
+    margin-left: 10px;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    /*z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #6441a5; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    z-index: 11;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    z-index: 12;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#container {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 50px auto;
+    transition: margin-left .5s;
+    height: 100%;
+    z-index: 1;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#menu-switch-bar {
+    grid-column: 1;
+    display: inline-grid;
+    grid-template-rows: auto;
+    background: #6441a5;
+    /*box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);*/
+    z-index: 10;
+}
+
+#menu-switch-btn {
+    grid-row: 1;
+    place-self: start center;
+    border: none;
+    background: transparent;
+    margin-top: 15px;
+    font-size: 24px;
+    transition: 0.3s;
+    cursor: pointer;
+    outline: none;
+}
+
+#twitch-embed {
+    grid-column: 2;
+    background: #000000;
+    z-index: 3;
+}
+
+#twitch-logo {
+    position: fixed;
+    display: inline-grid;
+    height: 100%;
+    width: 95%;
+    z-index: 2;
+}
+
+#twitch-logo img {
+    width: 25%;
+    place-self: center;
+}
+
+#twitch-loading {
+    position: fixed;
+    display: inline-grid;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+}
+
+#side-bar {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: auto 100px;
+    grid-template-columns: auto;
+}
+
+#follow-list {
+    grid-row: 1;
+    margin: 40px 0 0 15px;
+    overflow: scroll;
+}
+
+#login-btn {
+    grid-row: 2;
+    place-self: center stretch;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px 5px 5px 15px;
+    font-size: 40px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+#login-btn:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#profile {
+    grid-row: 2;
+    place-self: stretch;
+    display: inline-grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: auto;
+    color: #ffffff;
+    margin-left: 32px;
+}
+
+#profile-name {
+    grid-column: 1;
+    place-self: center start;
+    font-size: 24px;
+}
+
+#logout-btn {
+    grid-column: 2;
+    padding: 5px 0;
+    place-self: stretch;
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+
+/* https://loading.io/css/ begin */
+.lds-facebook {
+    place-self: center; /*added*/
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    width: 13px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+    left: 6px;
+    animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+    left: 26px;
+    animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+    left: 45px;
+    animation-delay: 0;
+}
+@keyframes lds-facebook {
+    0% {
+        top: 6px;
+        height: 51px;
+    }
+    50%, 100% {
+        top: 19px;
+        height: 26px;
+    }
+}
+/* end */
