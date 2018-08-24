@@ -18,7 +18,8 @@ function createWindow() {
         height: 800, 
         backgroundColor: '#6441a5',
         frame: false,
-        fullscreenable: true
+        fullscreenable: true,
+        resizable: true
     });
 
     // and load the index.html of the app.

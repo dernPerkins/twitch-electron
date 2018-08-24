@@ -12,7 +12,7 @@ body {
     font-family: 'Arvo', serif;
     height: 100%;
     display: grid;
-    grid-template-rows: 40px auto;
+    grid-template-rows: 39px auto;
 }
 
 .hidden {
@@ -40,7 +40,7 @@ button:hover {
     background-color: #6441a5;
     color: #ffffff;
     padding: 0 0 0 14px;
-    margin: 0px;
+    margin: 1px 1px 0px 1px; /* this makes it so we can resize */
     z-index: 13;
 }
 
