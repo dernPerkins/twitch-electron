@@ -6,6 +6,7 @@ const Tray = electron.Tray;
 const BrowserWindow = electron.BrowserWindow;
 //const countdown = require('.');
 const ipc = electron.ipcMain;
+const DOMAIN = 'http://localhost/LowTwitch';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -100,4 +101,47 @@ app.on('activate', () => {
 // Quit application IPC Event
 ipc.on('quit-application', function () {
     app.quit();
+});
+
+ipc.on('user-login', function () {
+    let loginWin = new BrowserWindow({
+        width: 1000, //should be 400 but for testing it's 1000
+        height: 800, 
+        resizable: false
+    });
+
+    // and load the index.html of the app.
+    loginWin.loadURL('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=jp0gvzo6nccw4x9scrpsj44t5xti9o&redirect_uri=http://localhost/LowTwitch/&scope=user_read');
+
+    // Open the DevTools.
+    loginWin.webContents.openDevTools();
+
+    // Emitted when the window is closed.
+    loginWin.on('closed', () => {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        loginWin = null;
+    });
+
+    loginWin.on('page-title-updated', function () {
+        // when the title changes we've arrived at our authentication page
+        // pull the authentication token and pass it back to the index renderer.
+        var loginUrl = loginWin.webContents.getURL();
+        // if the login is not the domain of the authentication server then just skip, it's probably the twitch login
+        if (loginUrl.indexOf(DOMAIN) == 0) {
+            var access_token = null;
+            try {
+                var access_token = loginUrl.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+            } catch (error) {
+                console.log('Error: ' + error.responseText);
+            }
+            if (access_token != null) {
+                // if the access token is recieved we'll send it to the renderer
+                win.webContents.send('user-login-completed', { access_token: access_token });
+            }
+            // if not we'll just close the window
+            loginWin.close();
+        }
+    });
 });
