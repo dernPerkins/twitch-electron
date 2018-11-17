@@ -6,7 +6,7 @@ const Tray = electron.Tray;
 const BrowserWindow = electron.BrowserWindow;
 //const countdown = require('.');
 const ipc = electron.ipcMain;
-const DOMAIN = 'http://localhost/LowTwitch';
+const DOMAIN = 'http://localhost:8888/LowTwitch/';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -111,7 +111,8 @@ ipc.on('user-login', function () {
     });
 
     // and load the index.html of the app.
-    loginWin.loadURL('https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=jp0gvzo6nccw4x9scrpsj44t5xti9o&redirect_uri=http://localhost/LowTwitch/&scope=user_read');
+    let oauthUrl = 'https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=jp0gvzo6nccw4x9scrpsj44t5xti9o&redirect_uri='+DOMAIN+'&scope=user_read';
+    loginWin.loadURL(oauthUrl);
 
     // Open the DevTools.
     loginWin.webContents.openDevTools();
