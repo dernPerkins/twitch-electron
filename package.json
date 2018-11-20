@@ -5,15 +5,28 @@
   "description": "Self Made Twitch Electron App",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "author": "Dean Perkins",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^2.0.8"
+    "electron": "^2.0.8",
+    "electron-builder": "^20.36.2"
   },
   "dependencies": {
+    "ajv": "^6.5.5",
     "jquery": "^3.3.1",
     "npm": "^6.4.0"
+  },
+  "build": {
+    "appId": "com.twitchelectron.app",
+    "productName": "Twitch-Electron",
+    "copyright": "Copyright © 2018 Dean Perkins"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:https://github.com/dernPerkins/twitch-electron.git"
   }
 }
