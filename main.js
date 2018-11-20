@@ -6,7 +6,7 @@ const Tray = electron.Tray;
 const BrowserWindow = electron.BrowserWindow;
 //const countdown = require('.');
 const ipc = electron.ipcMain;
-const DOMAIN = 'http://localhost:8888/LowTwitch/';
+const DOMAIN = 'https://dernperkins.github.io/twitch-electron/';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
