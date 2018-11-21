@@ -27,7 +27,7 @@ function createWindow() {
     win.loadFile('index.html');
 
     // Open the DevTools.
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -42,7 +42,8 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', _ => {
-    const tray = new Tray(path.join('images', 'Glitch_Purple_RGB.png'));
+    let dirname = path.join(__dirname, '\\images\\Glitch_Purple_RGB.png');
+    const tray = new Tray(dirname);
     const trayMenu = Menu.buildFromTemplate([
         {
             label: 'Quit',
@@ -115,7 +116,7 @@ ipc.on('user-login', function () {
     loginWin.loadURL(oauthUrl);
 
     // Open the DevTools.
-    loginWin.webContents.openDevTools();
+    //loginWin.webContents.openDevTools();
 
     // Emitted when the window is closed.
     loginWin.on('closed', () => {
